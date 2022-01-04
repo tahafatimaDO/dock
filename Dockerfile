@@ -13,4 +13,4 @@ RUN hugo --gc --minify
 FROM scratch
 WORKDIR /assets
 COPY robots.txt .
-COPY /wiki/public .
+
