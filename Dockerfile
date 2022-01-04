@@ -1,5 +1,5 @@
 # some comment (2)
-FROM ubuntu
+FROM ubuntu as project
 RUN apt-get update -y && \
 	apt-get install -y wget && \
 	wget https://github.com/gohugoio/hugo/releases/download/v0.89.2/hugo_0.89.2_Linux-64bit.tar.gz && \
@@ -13,4 +13,4 @@ RUN hugo --gc --minify
 FROM scratch
 WORKDIR /assets
 COPY robots.txt .
-
+COPY --from=project /wiki/public .
